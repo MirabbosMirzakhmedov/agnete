@@ -1,0 +1,326 @@
+body{
+  display:grid;
+  grid-gap:10px;
+  text-align: center;
+  height: 100vh;
+
+  grid-template-areas:
+  "header"
+  "hero"
+  "body"
+  "footer" ;
+}
+
+
+
+header {
+
+  background-color: black;
+  padding: 10px;
+  grid-area: header;
+  grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-gap:10px;
+
+  grid-template-areas: 
+  "brand brand"
+  "nav tools";
+}
+
+header .brand{
+
+  background-color:black;
+  grid-area: brand;
+  justify-self: center;
+    padding: 10px;
+    
+}
+
+
+header .nav{
+
+  background-color: black;
+  grid-area: nav;
+}
+
+
+/* Add a black background color to the top navigation */
+ header .nav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+header .nav a {
+  float: left;
+  color: #080707;
+  font-family: 'Brush Script MT', cursive;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 40px;
+}
+
+/* Change the color of links on hover */
+.nav a:hover {
+  background-color: rgb(0, 0, 0);
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.nav a.active {
+  background-color:white;
+  color: white;
+}
+
+header .tools{
+
+  background-color: rgb(0, 0, 0);
+  grid-area: tools;
+}
+.dropbtn {
+  background-color: #f8fff8;
+  color: rgb(0, 0, 0);
+  padding: 16px;
+  font-size: 25px;
+  font-family: 'Brush Script MT', cursive;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  font-family: 'Brush Script MT', cursive;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  font-family: 'Brush Script MT', cursive;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #000000;}
+
+.hero{
+  display: grid;
+  grid-gap: 10px;
+  grid-area: hero;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+
+  background-color: white;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+  " action" ;
+
+}
+
+.hero .feature {
+  background-color: white;
+  grid-area: feature;
+}
+.hero .action{
+  background-color:white;
+  grid-area:action ;
+  text-align: left;
+}
+
+/* Body section */
+main {
+  background: white;
+  padding: 10px;
+  grid-area: body;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+  grid-template-areas: 
+      "feature"
+      "ad"
+      "listing";
+}
+
+main .feature {
+  background: white;
+  grid-area: feature;
+}
+
+main .mobile-ad {
+  grid-area: ad;
+}
+
+main .listing {
+  background: white;
+  grid-area: listing;
+}
+
+/* Footer section */
+footer {
+  background: white;
+  padding: 10px;
+  grid-area: footer;
+   width: 100%;
+  height: 100%;
+  animation: pulse 5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      background-color: black;
+    }
+    100% {
+      background-color: #dacbcb;
+    }
+  }
+ 
+
+/* Hide Sections which are not part of mobile */
+.desktop-ad {
+  grid-area: ad;
+  display: none;
+}
+
+.hero .feature {
+  display: none;
+}
+
+/* Sidebar section */
+.sidebar {
+  background: white;
+  padding: 10px;
+  grid-area: sidebar;
+
+  display: none;
+}
+
+.sidebar .feature {
+  background: white;
+  height: 100%;
+}
+
+/* Other */
+.mobile-ad img {
+  vertical-align: top;
+  width: 100%;
+}
+
+.desktop-ad img {
+  vertical-align: top;
+  width: 350px;
+}
+
+.mobile-ad:hover {
+  opacity: 0.5;
+}
+
+.desktop-ad:hover {
+  opacity: 0.5;
+}
+
+/* Tablet friendly layout */
+@media (min-width: 576px) {
+  body {
+      grid-template-rows: auto auto 1fr auto auto;
+      grid-template-areas:
+          "header"
+          "hero"
+          "body"
+          "sidebar"
+          "footer";
+  }
+
+  /* Change Header Layout */
+  header {
+      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-areas:
+          "brand nav tools";
+  }
+
+  /* Change Hero Layout */
+  .hero {
+      grid-template-areas:
+          "feature"
+          "action";
+  }
+
+  .hero .feature {
+      display: block;
+  }
+
+  /* Change Body Layout */
+  main {
+      grid-template-columns: 1fr 200px;
+      grid-template-rows: auto 1fr;
+      grid-template-areas:
+          "feature ad"
+          "listing listing";
+  }
+
+  /* Change Sidebar Layout */
+  .sidebar {
+      display: grid;
+  }
+
+  .mobile-ad img {
+      width: 200px;
+  }
+}
+
+/* Desktop friendly layout */
+@media (min-width: 992px) {
+  body {
+      grid-template-columns: 1fr 350px;
+      grid-template-rows: auto auto 1fr auto;
+      grid-template-areas:
+          "header header"
+          "hero ad"
+          "body sidebar"
+          "footer footer"
+  }
+
+  /* Change Hero Layout */
+  .hero {
+      grid-template-columns: 2fr 1fr;
+      grid-template-areas:
+          "feature action"
+  }
+
+  /* Change Body Layout */
+  main {
+      grid-template-columns: 1fr 2fr;
+      grid-template-rows: 1fr;
+      grid-template-areas:
+          "feature listing"
+  }
+
+  .mobile-ad {
+      display: none;
+  }
+
+  .desktop-ad {
+      display: block;
+  }
+}
